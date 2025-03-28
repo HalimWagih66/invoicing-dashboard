@@ -1,9 +1,16 @@
+import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 
-import 'home_page.dart';
+import 'DashBoradView.dart';
+
 
 void main() {
-  runApp(const InvoicingDashboard());
+  runApp(
+    DevicePreview(
+      enabled: false,
+      builder: (context) => const InvoicingDashboard(),
+    ),
+  );
 }
 
 class InvoicingDashboard extends StatelessWidget {
@@ -12,13 +19,12 @@ class InvoicingDashboard extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      locale: DevicePreview.locale(context),
+      builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      home: MyHomePage(),
+      home: const DashBoradView(),
     );
   }
 }
-
-
-
